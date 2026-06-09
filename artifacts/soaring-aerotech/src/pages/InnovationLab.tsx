@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { Lightbulb, Cpu, Code, Shield, Zap, Crosshair } from "lucide-react";
+import { Lightbulb, Cpu, Code, Shield, Zap, Crosshair, Anchor, Brain, Factory, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function InnovationLab() {
   return (
     <main className="min-h-screen pt-20">
+      {/* Hero */}
       <section className="py-28 bg-[#0D1B2A] relative overflow-hidden">
         <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
           <motion.div 
@@ -14,7 +15,7 @@ export default function InnovationLab() {
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary font-mono text-sm mb-6 uppercase"
           >
             <Lightbulb className="w-4 h-4" />
-            <span>UAV R&D · MANUFACTURING · DEFENSE</span>
+            <span>R&D · UAV MANUFACTURING · MADE IN INDIA</span>
           </motion.div>
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
@@ -22,7 +23,7 @@ export default function InnovationLab() {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-6xl font-black text-white mb-6"
           >
-            Drone <span className="text-primary">Innovation Lab</span>
+            Innovation Lab &<br/><span className="text-primary">UAV Manufacturing</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -30,51 +31,57 @@ export default function InnovationLab() {
             transition={{ delay: 0.2 }}
             className="text-xl text-white/70 max-w-3xl mx-auto"
           >
-            Where India's next generation of UAVs are designed, built, and tested. Indigenous drone development spanning FPV systems, surveillance UAVs, defense drones, and high-altitude reconnaissance platforms.
+            From cutting-edge R&D in disaster management drones and AI/ML systems, to a 50,000 sq ft manufacturing facility producing defence, logistics, and surveillance UAVs — this is where India's drone future is being built.
           </motion.p>
         </div>
       </section>
 
-      {/* Core R&D Areas */}
+      {/* R&D Projects */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="mb-16">
-            <div className="section-label">DEVELOPMENT VERTICALS</div>
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">What We Build</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl">Soaring Aerotech is advancing beyond training and services into indigenous UAV manufacturing — building drones for commercial, industrial, and defense applications.</p>
+            <div className="section-label">ACTIVE R&D</div>
+            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">Research & Development Projects</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl">Our R&D division is working on next-generation drone systems that go far beyond commercial applications — pushing the boundaries of what UAVs can do.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
             {[
               { 
-                title: "FPV Drone Development", 
+                title: "Disaster Management UAV", 
                 icon: <Zap className="w-6 h-6" />, 
-                desc: "Custom first-person-view drones engineered for agility and precision. Designed for inspection, racing, and tactical applications requiring high-speed maneuverability." 
+                desc: "Specialized UAVs for rapid disaster zone assessment — flood mapping, fire monitoring, search & rescue coordination, and real-time situational awareness for relief agencies.",
+                status: "ACTIVE R&D"
               },
               { 
-                title: "Surveillance UAVs", 
-                icon: <Shield className="w-6 h-6" />, 
-                desc: "Long-endurance surveillance drones with high-resolution and thermal imaging payloads. Deployed for industrial facility monitoring, perimeter security, and area reconnaissance." 
+                title: "Tethered Drone Systems", 
+                icon: <Anchor className="w-6 h-6" />, 
+                desc: "Continuous-power tethered UAVs for persistent surveillance, communications relay, and monitoring applications where unlimited flight time is critical.",
+                status: "ACTIVE R&D"
               },
               { 
-                title: "Defense & Reconnaissance Drones", 
-                icon: <Crosshair className="w-6 h-6" />, 
-                desc: "Indigenous defense-grade UAVs for surveillance and reconnaissance missions. Engineered for durability, reliability, and operation in demanding field conditions." 
-              },
-              { 
-                title: "High-Altitude Drone Testing", 
+                title: "Agricultural UAV", 
                 icon: <Lightbulb className="w-6 h-6" />, 
-                desc: "Active R&D and field testing of UAVs at high altitudes — validating performance of airframes, motors, and electronics in low-pressure, low-temperature environments." 
+                desc: "Purpose-built agricultural drones optimized for Indian farming conditions — precision spraying, multispectral imaging, and autonomous farm operations.",
+                status: "PROTOTYPING"
               },
               { 
-                title: "Custom Payload Engineering", 
+                title: "AI/ML UAV Operations", 
+                icon: <Brain className="w-6 h-6" />, 
+                desc: "Integrating computer vision and machine learning into UAV systems for automated defect detection, object tracking, and fully autonomous mission execution.",
+                status: "ACTIVE R&D"
+              },
+              { 
+                title: "Quantum Computing Applications", 
                 icon: <Cpu className="w-6 h-6" />, 
-                desc: "Design and integration of specialized sensors, cameras, and mission-specific hardware onto custom drone platforms for unique operational requirements." 
+                desc: "Exploratory research into quantum computing applications for drone swarm coordination, encrypted communications, and optimization of complex multi-drone missions.",
+                status: "RESEARCH"
               },
               { 
-                title: "Software & Autonomous Systems", 
+                title: "Advanced Payload Development", 
                 icon: <Code className="w-6 h-6" />, 
-                desc: "Mission planning software, computer vision algorithms, and autonomous flight systems that enable drones to operate intelligently without constant human control." 
+                desc: "Custom sensor and payload engineering for specialized applications — hyperspectral imaging, gas detection, LiDAR integration, and mission-specific hardware systems.",
+                status: "ACTIVE R&D"
               }
             ].map((item, i) => (
               <motion.div 
@@ -85,7 +92,10 @@ export default function InnovationLab() {
                 transition={{ delay: i * 0.1 }}
                 className="left-accent-card bg-white p-6 shadow-sm border border-border"
               >
-                <div className="bg-primary/10 p-3 rounded-lg w-fit text-primary mb-4">{item.icon}</div>
+                <div className="flex items-start justify-between mb-4">
+                  <div className="bg-primary/10 p-3 rounded-lg w-fit text-primary">{item.icon}</div>
+                  <span className="text-xs font-bold font-mono text-primary/70 bg-primary/5 px-2 py-1 rounded-full">{item.status}</span>
+                </div>
                 <h3 className="text-lg font-bold text-foreground mb-2">{item.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
               </motion.div>
@@ -94,60 +104,75 @@ export default function InnovationLab() {
         </div>
       </section>
 
-      {/* Positioning */}
+      {/* Manufacturing Section */}
       <section className="py-24 bg-[#F5F4F0] border-t border-border">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div>
-              <div className="section-label">WHY THIS MATTERS</div>
-              <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-8">Beyond Training: Building India's Drone Future</h2>
+              <div className="section-label">UAV MANUFACTURING</div>
+              <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">50,000 Sq Ft. Made in India.</h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                India's drone policy reforms have created a massive opportunity for indigenous UAV manufacturing. The government's Production Linked Incentive (PLI) scheme for drones and the push for import substitution make this the right moment to build domestic capacity.
+                Soaring Aerotech operates a <strong>50,000 square foot manufacturing facility</strong> — one of the largest drone manufacturing setups in Central India — producing indigenous UAVs for commercial, government, and defence markets.
               </p>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                Soaring Aerotech's R&D activities position us at the intersection of training, services, and manufacturing — creating a self-sustaining drone ecosystem where our trained pilots fly our own manufactured drones on commercial and defense contracts.
+                With national and international collaborations, our manufacturing division is positioned to scale into a major supplier of Made in India drones across multiple segments.
               </p>
-              <ul className="space-y-0">
-                {[
-                  "Recent high-altitude drone testing completed successfully",
-                  "FPV and surveillance drone prototypes in development",
-                  "Defense drone engineering for specialized applications",
-                  "Open to collaboration with colleges and research institutions",
-                  "AIC Prestige incubated — supported R&D infrastructure"
-                ].map((point, i) => (
-                  <li key={i} className="flex items-start gap-6 border-t border-border pt-6 mt-0">
-                    <span className="text-primary font-mono font-bold mt-1">0{i+1}</span>
-                    <span className="text-foreground font-medium pb-6">{point}</span>
-                  </li>
+              <div className="flex flex-wrap gap-3">
+                {["50,000 sq ft Facility", "National Collaborations", "International Partnerships", "Made in India", "PLI Drone Scheme Aligned"].map((badge, i) => (
+                  <span key={i} className="inline-block px-4 py-1.5 rounded-full bg-white border border-border text-sm font-semibold text-foreground">{badge}</span>
                 ))}
-              </ul>
+              </div>
             </div>
 
             <div className="grid grid-cols-1 gap-6">
-              <div className="bg-white rounded-2xl p-8 border border-border shadow-sm">
-                <div className="text-sm font-mono text-primary mb-3 uppercase font-bold">Lab Gallery</div>
-                {[
-                  { title: "Prototyping Bay" },
-                  { title: "High-Altitude Field Testing" },
-                  { title: "Defense Drone Assembly" },
-                ].map((img, i) => (
-                  <div key={i} className="rounded-xl overflow-hidden aspect-[16/7] relative bg-[#F5F4F0] border border-border flex items-center justify-center mb-4 last:mb-0">
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10" />
-                    <span className="text-muted-foreground/30 font-mono text-xs">IMAGE PLACEHOLDER</span>
-                    <div className="absolute bottom-3 left-4 text-sm font-bold text-white z-20">{img.title}</div>
+              {[
+                { 
+                  icon: <Truck className="w-8 h-8 text-primary" />, 
+                  title: "Logistics Drones", 
+                  desc: "Last-mile delivery and cargo transport UAVs designed for India's diverse terrain — urban delivery networks and remote area logistics." 
+                },
+                { 
+                  icon: <Shield className="w-8 h-8 text-primary" />, 
+                  title: "Defence Drones", 
+                  desc: "Defence-grade UAVs for surveillance, reconnaissance, and specialized military applications — engineered for durability and operational reliability." 
+                },
+                { 
+                  icon: <Crosshair className="w-8 h-8 text-primary" />, 
+                  title: "Surveillance Drones", 
+                  desc: "Long-endurance surveillance UAVs with advanced imaging payloads for perimeter security, border patrol, and critical infrastructure monitoring." 
+                },
+                { 
+                  icon: <Factory className="w-8 h-8 text-primary" />, 
+                  title: "Custom UAV Design & Prototyping", 
+                  desc: "End-to-end custom drone development — from concept and engineering to prototype, testing, and production — for any application or industry." 
+                },
+              ].map((item, i) => (
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="flex gap-5 p-6 bg-white rounded-2xl border border-border shadow-sm"
+                >
+                  <div className="shrink-0 mt-1">{item.icon}</div>
+                  <div>
+                    <h3 className="text-lg font-bold text-foreground mb-2">{item.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
                   </div>
-                ))}
-              </div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
+      {/* CTA */}
       <section className="py-24 bg-white border-t border-border text-center">
         <div className="container mx-auto px-4 md:px-6">
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">Collaborate With Our R&D Team</h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">Collaborate With Our R&D & Manufacturing Team</h2>
           <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
-            Looking to set up a drone Centre of Excellence at your college? Need custom UAV engineering for a defense or industrial project? Let's talk.
+            Whether you're a college looking to set up a drone Centre of Excellence, a defence agency needing custom UAVs, or a researcher looking to collaborate — we're ready to build together.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact">
