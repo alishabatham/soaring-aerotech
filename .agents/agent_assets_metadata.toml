@@ -1,0 +1,62 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "tVZxn5-cZzMT6mJKOyBzD"
+uri = "file://artifacts/soaring-aerotech/public/images/hero-bg.png"
+type = "image"
+title = "Cinematic drone hero background"
+
+[[generated]]
+id = "OXx2KAGctA_hG3fYco6hC"
+uri = "file://artifacts/soaring-aerotech/public/images/project-road.png"
+type = "image"
+title = "Road survey project"
+
+[[generated]]
+id = "tXP7F5oxtn2SSC3JgOoI7"
+uri = "file://artifacts/soaring-aerotech/public/images/project-agri.png"
+type = "image"
+title = "Agriculture mapping project"
+
+[[generated]]
+id = "xIgLW0ExsfpH5JXa8CYXz"
+uri = "file://artifacts/soaring-aerotech/public/images/project-solar.png"
+type = "image"
+title = "Solar inspection project"
+
+[[generated]]
+id = "_Nic11T2PQnEfwnTKGX3w"
+uri = "file://artifacts/soaring-aerotech/public/images/project-construction.png"
+type = "image"
+title = "Construction project"
+
+[[generated]]
+id = "YJtApz3gNYKPO1BZAkbWG"
+uri = "file://artifacts/soaring-aerotech/public/images/project-powerline.png"
+type = "image"
+title = "Powerline inspection"
+
+[[generated]]
+id = "1UHyuSJeaDRKmuoyYYb30"
+uri = "file://artifacts/soaring-aerotech/public/images/team-founder.png"
+type = "image"
+title = "Founder portrait"
+
+[[generated]]
+id = "_bDUvLXGihu_FW7A8DMwR"
+uri = "file://artifacts/soaring-aerotech/public/images/team-1.png"
+type = "image"
+title = "Team member 1"
+
+[[generated]]
+id = "xCdyEWdp7Yse5e6N6WGF4"
+uri = "file://artifacts/soaring-aerotech/public/images/team-2.png"
+type = "image"
+title = "Team member 2"
+
+[[generated]]
+id = "n_qBAtz7u72tAgfLIXiH7"
+uri = "file://artifacts/soaring-aerotech/public/images/student-1.png"
+type = "image"
+title = "Student success"
