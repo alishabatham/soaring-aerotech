@@ -35,7 +35,6 @@ export function Footer() {
                 { name: "About Us", href: "/about" },
                 { name: "Drone Training", href: "/training" },
                 { name: "Drone Services", href: "/services" },
-                { name: "Innovation Lab", href: "/innovation-lab" },
                 { name: "Case Projects", href: "/projects" },
               ].map((link) => (
                 <li key={link.name}>

@@ -12,7 +12,6 @@ import Training from "@/pages/Training";
 import Services from "@/pages/Services";
 import Projects from "@/pages/Projects";
 import Industries from "@/pages/Industries";
-import InnovationLab from "@/pages/InnovationLab";
 import Media from "@/pages/Media";
 import Blog from "@/pages/Blog";
 import Contact from "@/pages/Contact";
@@ -32,7 +31,6 @@ function Router() {
           <Route path="/services" component={Services} />
           <Route path="/projects" component={Projects} />
           <Route path="/industries" component={Industries} />
-          <Route path="/innovation-lab" component={InnovationLab} />
           <Route path="/media" component={Media} />
           <Route path="/blog" component={Blog} />
           <Route path="/contact" component={Contact} />
