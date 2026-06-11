@@ -49,11 +49,8 @@ export function Navbar() {
               </svg>
             </div>
             <div>
-              <div className={`font-black text-sm tracking-tight leading-tight transition-colors ${isScrolled ? "text-foreground" : "text-white"}`}>
+              <div className={`font-black text-base tracking-tight leading-tight transition-colors ${isScrolled ? "text-[#111111]" : "text-white"}`}>
                 SOARING <span className="text-primary">AEROTECH</span>
-              </div>
-              <div className={`text-[9px] font-mono tracking-widest uppercase transition-colors ${isScrolled ? "text-foreground/35" : "text-white/35"}`}>
-                Drone Ecosystem
               </div>
             </div>
           </Link>

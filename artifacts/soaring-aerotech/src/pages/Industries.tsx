@@ -102,7 +102,7 @@ export default function Industries() {
           <img
             src="https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?w=1600&h=900&fit=crop"
             alt=""
-            className="w-full h-full object-cover opacity-30"
+            className="w-full h-full object-cover opacity-55"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#111111] via-[#111111]/85 to-[#111111]/40" />
         </div>
@@ -174,7 +174,7 @@ export default function Industries() {
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0">
           <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?w=1600&h=700&fit=crop" alt="" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-[#111111]/88" />
+          <div className="absolute inset-0 bg-black/60" />
         </div>
         <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
           <h2 className="font-display text-3xl md:text-5xl text-white mb-5">Your Industry Not Listed?</h2>

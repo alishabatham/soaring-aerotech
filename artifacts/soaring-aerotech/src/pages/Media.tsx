@@ -34,7 +34,7 @@ export default function Media() {
           <img
             src="https://images.unsplash.com/photo-1534120247760-c44c3e4a62f1?w=1600&h=900&fit=crop"
             alt=""
-            className="w-full h-full object-cover opacity-30"
+            className="w-full h-full object-cover opacity-55"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#111111] via-[#111111]/85 to-[#111111]/50" />
         </div>

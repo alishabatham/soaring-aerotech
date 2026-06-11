@@ -204,15 +204,15 @@ export default function Home() {
       {/* ── Hero ─────────────────────────────────── */}
       <section className="relative min-h-screen flex items-center pt-24 overflow-hidden bg-[#111111]">
         <div className="absolute inset-0">
-          <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?w=1800&h=1000&fit=crop" alt="" className="w-full h-full object-cover opacity-30" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#111111] via-[#111111]/85 to-transparent" />
+          <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?w=1800&h=1000&fit=crop" alt="" className="w-full h-full object-cover opacity-55" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/10" />
           <div className="absolute inset-0 opacity-[0.035]" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,.4) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.4) 1px,transparent 1px)", backgroundSize: "60px 60px" }} />
         </div>
 
         <div className="container mx-auto px-4 md:px-6 relative z-10 py-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="max-w-2xl">
-              <motion.h1 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="font-display text-6xl md:text-8xl text-white leading-[0.92] mb-6">
+              <motion.h1 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="font-display text-5xl md:text-7xl lg:text-8xl text-white leading-[0.95] mb-6">
                 Building<br />India's Future<br /><span className="text-primary">Drone Ecosystem.</span>
               </motion.h1>
 

@@ -38,7 +38,7 @@ export default function Training() {
           <img
             src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=1600&h=900&fit=crop"
             alt=""
-            className="w-full h-full object-cover opacity-30"
+            className="w-full h-full object-cover opacity-55"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#111111] via-[#111111]/80 to-transparent" />
         </div>
