@@ -163,18 +163,18 @@ export default function Industries() {
       </section>
 
       {/* ── CTA ──────────────────────────────────── */}
-      <section className="relative py-24 overflow-hidden">
+      <section className="relative py-14 overflow-hidden">
         <div className="absolute inset-0">
-          <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?w=1600&h=700&fit=crop" alt="" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-black/60" />
+          <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?w=1600&h=500&fit=crop" alt="" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-black/65" />
         </div>
         <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
-          <h2 className="font-display text-3xl md:text-5xl text-white mb-5">Your Industry Not Listed?</h2>
-          <p className="text-white/50 mb-10 max-w-2xl mx-auto">
+          <h2 className="font-display text-3xl md:text-4xl text-white mb-3">Your Industry Not Listed?</h2>
+          <p className="text-white/50 mb-6 max-w-lg mx-auto text-sm">
             Drone technology is sector-agnostic. Contact us to discuss how UAVs can solve your specific operational challenges.
           </p>
           <Link href="/contact">
-            <Button size="lg" className="rounded-full h-14 px-8 text-base font-semibold">Discuss Your Use Case</Button>
+            <Button size="lg" className="rounded-full h-12 px-8 text-base font-semibold">Discuss Your Use Case</Button>
           </Link>
         </div>
       </section>

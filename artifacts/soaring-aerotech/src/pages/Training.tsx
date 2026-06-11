@@ -1,6 +1,26 @@
 import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
-import { ChevronRight, ShieldCheck, Clock, Map, Cpu, Brain, Wrench, Tractor, TrendingUp, Target, MapPin, Phone, FileText, User, Calendar, IndianRupee, BadgeCheck, CheckCircle } from "lucide-react";
+import {
+  ChevronRight,
+  ShieldCheck,
+  Clock,
+  Map,
+  Cpu,
+  Brain,
+  Wrench,
+  Tractor,
+  TrendingUp,
+  Target,
+  MapPin,
+  Phone,
+  FileText,
+  User,
+  Calendar,
+  IndianRupee,
+  BadgeCheck,
+  ChevronLeft,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const programs = [
@@ -27,6 +47,116 @@ const docs = [
   { icon: <FileText className="w-4 h-4" />, label: "Medical Certificate of Fitness — from certified MBBS Doctor" },
   { icon: <User className="w-4 h-4" />, label: "4 Passport-sized photos (white background)" },
 ];
+
+function CourseSlider() {
+  const [current, setCurrent] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const total = programs.length;
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const startTimer = () => {
+    intervalRef.current = setInterval(() => {
+      setCurrent((p) => (p + 1) % total);
+    }, 3200);
+  };
+
+  useEffect(() => {
+    if (!paused) startTimer();
+    return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
+  }, [paused]);
+
+  const go = (dir: number) => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    setCurrent((p) => (p + dir + total) % total);
+    if (!paused) startTimer();
+  };
+
+  const getVisible = () => {
+    const indices: number[] = [];
+    for (let i = 0; i < 4; i++) {
+      indices.push((current + i) % total);
+    }
+    return indices;
+  };
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      <div className="overflow-hidden">
+        <motion.div
+          key={current}
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.45, ease: "easeOut" }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+        >
+          {getVisible().map((idx) => {
+            const p = programs[idx];
+            return (
+              <div
+                key={idx}
+                className="group relative overflow-hidden rounded-2xl cursor-pointer aspect-[3/4]"
+                onClick={() => document.getElementById("enroll")?.scrollIntoView({ behavior: "smooth" })}
+              >
+                <img
+                  src={p.img}
+                  alt={p.title}
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/10" />
+                <div className="absolute top-4 left-4">
+                  <span className="bg-primary text-white text-[10px] font-bold uppercase tracking-wide px-2.5 py-1 rounded">
+                    {p.tag}
+                  </span>
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 p-5">
+                  <div className="flex items-center gap-1.5 text-white/50 text-[10px] font-mono uppercase tracking-wider mb-2">
+                    <Clock className="w-3 h-3" />{p.duration}
+                  </div>
+                  <h3 className="font-display text-lg text-white leading-tight mb-3">{p.title}</h3>
+                  <div className="flex items-center gap-1.5 text-white/60 text-sm">
+                    Learn more <ChevronRight className="w-3.5 h-3.5" />
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </motion.div>
+      </div>
+
+      <div className="flex items-center justify-between mt-6">
+        <div className="flex gap-1.5">
+          {programs.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrent(i)}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                i === current ? "w-6 bg-primary" : "w-1.5 bg-border hover:bg-foreground/20"
+              }`}
+            />
+          ))}
+        </div>
+        <div className="flex gap-2">
+          <button
+            onClick={() => go(-1)}
+            className="w-9 h-9 rounded-full border border-border flex items-center justify-center hover:border-primary hover:text-primary transition-colors"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+          <button
+            onClick={() => go(1)}
+            className="w-9 h-9 rounded-full border border-border flex items-center justify-center hover:border-primary hover:text-primary transition-colors"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Training() {
   return (
@@ -63,7 +193,10 @@ export default function Training() {
                 ))}
               </div>
             </motion.div>
-            <motion.div initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.1 }}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.97 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.1 }}
               className="relative overflow-hidden rounded-2xl aspect-[4/3] hidden lg:block"
             >
               <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=800&h=600&fit=crop" alt="Drone pilot training" className="w-full h-full object-cover" />
@@ -78,7 +211,6 @@ export default function Training() {
           <div className="section-label">DGCA CERTIFIED PROGRAM</div>
           <h2 className="font-display text-3xl md:text-4xl text-foreground mb-8">Remote Pilot Certificate (RPC)</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10">
-            {/* Small Class */}
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="rounded-2xl border-2 border-primary overflow-hidden shadow-sm">
               <div className="relative h-40 overflow-hidden">
                 <img src="https://images.unsplash.com/photo-1601979031925-424e53b6caaa?w=600&h=300&fit=crop" alt="Small Class" className="w-full h-full object-cover" />
@@ -99,7 +231,6 @@ export default function Training() {
               </div>
             </motion.div>
 
-            {/* Multirotor */}
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="rounded-2xl border border-border overflow-hidden shadow-sm">
               <div className="relative h-40 overflow-hidden">
                 <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&h=300&fit=crop" alt="Multirotor" className="w-full h-full object-cover" />
@@ -121,7 +252,6 @@ export default function Training() {
             </motion.div>
           </div>
 
-          {/* Quick facts */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {[
               { icon: <Clock className="w-4 h-4 text-primary" />, label: "Duration", value: "5 Days Total" },
@@ -141,7 +271,7 @@ export default function Training() {
         </div>
       </section>
 
-      {/* ── Course structure with images ─────────── */}
+      {/* ── Course structure ─────────────────────── */}
       <section className="py-20 bg-[#F5F5F5] border-b border-border">
         <div className="container mx-auto px-4 md:px-6">
           <div className="section-label mb-8">COURSE STRUCTURE</div>
@@ -213,7 +343,7 @@ export default function Training() {
         </div>
       </section>
 
-      {/* ── Other programs ────────────────────────── */}
+      {/* ── Skill Development Courses Slider ─────── */}
       <section className="py-20 bg-white border-b border-border">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex items-end justify-between mb-10">
@@ -221,33 +351,14 @@ export default function Training() {
               <div className="section-label">MORE PROGRAMS</div>
               <h2 className="font-display text-3xl md:text-4xl text-foreground">Skill Development Courses</h2>
             </div>
-            <button onClick={() => document.getElementById("enroll")?.scrollIntoView({ behavior: "smooth" })} className="hidden md:inline-flex items-center gap-2 text-primary font-bold text-sm">
+            <button
+              onClick={() => document.getElementById("enroll")?.scrollIntoView({ behavior: "smooth" })}
+              className="hidden md:inline-flex items-center gap-2 text-primary font-bold text-sm"
+            >
               Enquire Now <ChevronRight className="w-4 h-4" />
             </button>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {programs.map((p, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}
-                className="group relative overflow-hidden rounded-2xl cursor-pointer aspect-[3/4]"
-                onClick={() => document.getElementById("enroll")?.scrollIntoView({ behavior: "smooth" })}
-              >
-                <img src={p.img} alt={p.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/10" />
-                <div className="absolute top-4 left-4">
-                  <span className="bg-primary text-white text-[10px] font-bold uppercase tracking-wide px-2.5 py-1 rounded">{p.tag}</span>
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 p-5">
-                  <div className="flex items-center gap-1.5 text-white/50 text-[10px] font-mono uppercase tracking-wider mb-2">
-                    <Clock className="w-3 h-3" />{p.duration}
-                  </div>
-                  <h3 className="font-display text-lg text-white leading-tight mb-3">{p.title}</h3>
-                  <div className="flex items-center gap-1.5 text-white/60 text-sm">
-                    Learn more <ChevronRight className="w-3.5 h-3.5" />
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+          <CourseSlider />
         </div>
       </section>
 
@@ -321,7 +432,7 @@ export default function Training() {
       </section>
 
       {/* ── Enroll form ──────────────────────────── */}
-      <section id="enroll" className="py-24 bg-white">
+      <section id="enroll" className="py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-xl mx-auto">
             <div className="bg-white rounded-2xl p-8 shadow-lg border-t-4 border-primary border border-border">
@@ -333,11 +444,11 @@ export default function Training() {
                   <div><label className="text-xs font-semibold text-foreground block mb-1.5">Phone</label><input type="tel" className="w-full bg-[#F5F5F5] border border-border rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-primary" placeholder="+91 78699 18736" /></div>
                 </div>
                 <div><label className="text-xs font-semibold text-foreground block mb-1.5">Email</label><input type="email" className="w-full bg-[#F5F5F5] border border-border rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-primary" placeholder="you@example.com" /></div>
-                <div><label className="text-xs font-semibold text-foreground block mb-1.5">Program</label>
+                <div>
+                  <label className="text-xs font-semibold text-foreground block mb-1.5">Program</label>
                   <select className="w-full bg-[#F5F5F5] border border-border rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-primary appearance-none">
-                    <option value="">Select a program...</option>
-                    <option>RPC — Small Class Rotorcraft (₹25,000 + GST)</option>
-                    <option>RPC — Multirotor DGCA Certified (₹35,000 + GST)</option>
+                    <option>DGCA RPC — Small Class (₹25,000)</option>
+                    <option>DGCA Multirotor (₹35,000)</option>
                     <option>Mapping & Surveying</option>
                     <option>GIS & Geospatial</option>
                     <option>Thermal & Multispectral</option>
@@ -345,16 +456,15 @@ export default function Training() {
                     <option>Precision Agriculture</option>
                     <option>Assembly & Maintenance</option>
                     <option>Drone Entrepreneurship</option>
-                    <option>Corporate / Institutional Batch</option>
+                    <option>Corporate Batch Enquiry</option>
                   </select>
                 </div>
-                <div><label className="text-xs font-semibold text-foreground block mb-1.5">City / Location</label><input type="text" className="w-full bg-[#F5F5F5] border border-border rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-primary" placeholder="Your city" /></div>
-                <Button type="submit" className="w-full h-12 rounded-xl text-base font-bold">Submit Enquiry</Button>
+                <div><label className="text-xs font-semibold text-foreground block mb-1.5">Message (optional)</label><textarea rows={3} className="w-full bg-[#F5F5F5] border border-border rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-primary resize-none" placeholder="Any specific requirements or questions..." /></div>
+                <Button type="submit" className="w-full h-12 rounded-xl font-bold">Submit Enquiry</Button>
+                <p className="text-[10px] text-muted-foreground text-center">
+                  By submitting you agree to be contacted by our training team.
+                </p>
               </form>
-              <div className="mt-6 pt-5 border-t border-border flex items-center justify-center gap-2 text-sm text-muted-foreground">
-                <Phone className="w-4 h-4 text-primary" />
-                <span>Or call us directly: <a href="tel:+917869918736" className="font-bold text-foreground hover:text-primary transition-colors">+91 78699 18736</a></span>
-              </div>
             </div>
           </div>
         </div>
