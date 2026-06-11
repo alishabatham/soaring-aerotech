@@ -1,20 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { Award, ShieldCheck, Globe, Rocket, GraduationCap, Wrench, Lightbulb, Factory, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Award, ShieldCheck, Globe, Rocket, GraduationCap, Wrench, Lightbulb, Factory, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-const recognitions = [
-  "Successfully contributed to the Drone Didi Initiative, promoting women empowerment through drone technology training.",
-  "Recognized in leading newspapers such as City Bhaskar, Yash Bharat, and other regional media platforms for innovative drone technology initiatives.",
-  "Conducted drone awareness and skill development programs focused on creating employment and entrepreneurship opportunities.",
-  "Actively supporting women empowerment through drone pilot training and certification programs.",
-  "Featured for contributions towards advancing drone technology adoption across various sectors.",
-  "Promoting drone-based solutions for infrastructure monitoring, surveying, agriculture, and industrial applications.",
-  "Working towards building a skilled workforce for India's rapidly growing drone ecosystem.",
-  "Recognized for industry-academia collaboration in drone research, training, and innovation.",
-  "Contributing to the development of next-generation UAV technologies through research and practical implementation.",
-  "Supporting government and industry initiatives through drone-based training and technology solutions.",
-];
 
 const pillars = [
   {
@@ -192,31 +179,6 @@ export default function About() {
                 <div className="text-xs text-muted-foreground">{c.desc}</div>
               </motion.div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Recognitions ─────────────────────────── */}
-      <section className="py-20 bg-white border-b border-border">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
-            <div>
-              <div className="section-label">RECOGNITIONS</div>
-              <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">Achievements &amp; Recognition</h2>
-              <p className="text-muted-foreground text-sm leading-relaxed">Soaring Aerotech has been recognized across media, government, and industry for its contributions to India's drone ecosystem.</p>
-            </div>
-            <div className="lg:col-span-2">
-              <div className="divide-y divide-border">
-                {recognitions.map((r, i) => (
-                  <motion.div key={i} initial={{ opacity: 0, x: -12 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}
-                    className="flex items-start gap-4 py-4"
-                  >
-                    <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                    <p className="text-foreground/75 text-sm leading-relaxed">{r}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
       </section>
