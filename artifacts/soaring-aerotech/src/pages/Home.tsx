@@ -606,61 +606,38 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* ── Trust bar ────────────────────────────── */}
-      <section className="py-4 bg-white border-b border-border overflow-hidden">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="flex flex-wrap items-center justify-center gap-x-0 gap-y-2">
-            {[
-              {
-                icon: (
-                  <ShieldCheck className="w-3.5 h-3.5 text-primary shrink-0" />
-                ),
-                label: "DGCA Approved RPTO",
-              },
-              {
-                icon: <Award className="w-3.5 h-3.5 text-primary shrink-0" />,
-                label: "Startup India Recognised",
-              },
-              {
-                icon: <Factory className="w-3.5 h-3.5 text-primary shrink-0" />,
-                label: "MSME Registered",
-              },
-              {
-                icon: (
-                  <GraduationCap className="w-3.5 h-3.5 text-primary shrink-0" />
-                ),
-                label: "AIC Prestige Incubated",
-              },
-              {
-                icon: <Wrench className="w-3.5 h-3.5 text-primary shrink-0" />,
-                label: "50,000 sq ft Facility",
-              },
-              {
-                icon: <MapPin className="w-3.5 h-3.5 text-primary shrink-0" />,
-                label: "Indore, Madhya Pradesh",
-              },
-            ].map((item, i, arr) => (
-              <div key={i} className="flex items-center">
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: i * 0.08 }}
-                  className="flex items-center gap-1.5 px-5 py-1"
-                >
-                  {item.icon}
-                  <span className="text-xs font-semibold text-foreground/60 tracking-wide uppercase">
-                    {item.label}
+      {/* ── Trust bar marquee ────────────────────── */}
+      <section className="py-3 bg-white border-b border-border overflow-hidden">
+        <div
+          className="flex w-max"
+          style={{ animation: "trustMarquee 20s linear infinite" }}
+        >
+          {[...Array(4)].map((_, copy) => (
+            <div key={copy} className="flex items-center shrink-0">
+              {[
+                "DGCA Approved RPTO",
+                "Startup India Recognised",
+                "MSME Registered",
+                "AIC Prestige Incubated",
+                "50,000 sq ft Facility",
+                "Indore, Madhya Pradesh",
+              ].map((label, i) => (
+                <div key={i} className="flex items-center">
+                  <span className="px-7 text-[11px] font-bold text-foreground/50 tracking-widest uppercase whitespace-nowrap">
+                    {label}
                   </span>
-                </motion.div>
-                {i < arr.length - 1 && (
-                  <span className="text-border text-lg font-thin select-none">
-                    |
-                  </span>
-                )}
-              </div>
-            ))}
-          </div>
+                  <span className="text-primary text-xs select-none">✦</span>
+                </div>
+              ))}
+            </div>
+          ))}
         </div>
+        <style>{`
+          @keyframes trustMarquee {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+        `}</style>
       </section>
 
       {/* ── Stats ────────────────────────────────── */}
