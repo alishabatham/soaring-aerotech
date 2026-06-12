@@ -297,7 +297,7 @@ const projects = [
 
 const directors = [
   {
-    name: "Himanshu Jain",
+    name: "Mr. Himanshu Jain",
     role: "Director",
     quote:
       "We are building a complete drone innovation ecosystem — from R&D to manufacturing to defence applications.",
@@ -506,26 +506,7 @@ export default function Home() {
               </motion.p>
 
               {/* 4 pillars tags */}
-              <motion.div
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.24 }}
-                className="flex flex-wrap gap-2 mb-8"
-              >
-                {[
-                  "🎓 Training",
-                  "🛠️ Services",
-                  "🔬 R&D",
-                  "🏭 Manufacturing",
-                ].map((t, i) => (
-                  <span
-                    key={i}
-                    className="px-4 py-1.5 rounded-full border border-white/15 text-white/50 text-sm font-medium"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </motion.div>
+              
 
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
@@ -630,12 +611,34 @@ export default function Home() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-wrap items-center justify-center gap-x-0 gap-y-2">
             {[
-              { icon: <ShieldCheck className="w-3.5 h-3.5 text-primary shrink-0" />, label: "DGCA Approved RPTO" },
-              { icon: <Award className="w-3.5 h-3.5 text-primary shrink-0" />, label: "Startup India Recognised" },
-              { icon: <Factory className="w-3.5 h-3.5 text-primary shrink-0" />, label: "MSME Registered" },
-              { icon: <GraduationCap className="w-3.5 h-3.5 text-primary shrink-0" />, label: "AIC Prestige Incubated" },
-              { icon: <Wrench className="w-3.5 h-3.5 text-primary shrink-0" />, label: "50,000 sq ft Facility" },
-              { icon: <MapPin className="w-3.5 h-3.5 text-primary shrink-0" />, label: "Indore, Madhya Pradesh" },
+              {
+                icon: (
+                  <ShieldCheck className="w-3.5 h-3.5 text-primary shrink-0" />
+                ),
+                label: "DGCA Approved RPTO",
+              },
+              {
+                icon: <Award className="w-3.5 h-3.5 text-primary shrink-0" />,
+                label: "Startup India Recognised",
+              },
+              {
+                icon: <Factory className="w-3.5 h-3.5 text-primary shrink-0" />,
+                label: "MSME Registered",
+              },
+              {
+                icon: (
+                  <GraduationCap className="w-3.5 h-3.5 text-primary shrink-0" />
+                ),
+                label: "AIC Prestige Incubated",
+              },
+              {
+                icon: <Wrench className="w-3.5 h-3.5 text-primary shrink-0" />,
+                label: "50,000 sq ft Facility",
+              },
+              {
+                icon: <MapPin className="w-3.5 h-3.5 text-primary shrink-0" />,
+                label: "Indore, Madhya Pradesh",
+              },
             ].map((item, i, arr) => (
               <div key={i} className="flex items-center">
                 <motion.div
@@ -645,10 +648,14 @@ export default function Home() {
                   className="flex items-center gap-1.5 px-5 py-1"
                 >
                   {item.icon}
-                  <span className="text-xs font-semibold text-foreground/60 tracking-wide uppercase">{item.label}</span>
+                  <span className="text-xs font-semibold text-foreground/60 tracking-wide uppercase">
+                    {item.label}
+                  </span>
                 </motion.div>
                 {i < arr.length - 1 && (
-                  <span className="text-border text-lg font-thin select-none">|</span>
+                  <span className="text-border text-lg font-thin select-none">
+                    |
+                  </span>
                 )}
               </div>
             ))}
@@ -913,19 +920,11 @@ export default function Home() {
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/90 via-[#111111]/30 to-transparent" />
-                  <div className="absolute top-4 left-4">
-                    <span className="text-[10px] font-bold font-mono text-primary bg-black/50 backdrop-blur-sm border border-primary/20 px-2.5 py-1 rounded-full">
-                      {p.cat}
-                    </span>
-                  </div>
+
                   <div className="absolute bottom-0 left-0 right-0 p-4">
                     <h3 className="font-display text-base text-white leading-tight mb-1">
                       {p.title}
                     </h3>
-                    <div className="flex items-center gap-1.5 text-primary text-xs font-semibold">
-                      <span className="w-1 h-1 rounded-full bg-primary" />
-                      {p.result}
-                    </div>
                   </div>
                 </div>
               </motion.div>
