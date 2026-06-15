@@ -533,280 +533,207 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       {/* ── Hero ─────────────────────────────────── */}
-      <section className="relative min-h-screen flex items-center pt-24 overflow-hidden bg-[#030712]">
-        {/* Living Ambient Gradients (Staggered orbs drifting slowly) */}
-        <motion.div 
-          animate={{ 
-            x: [0, 60, -40, 0],
-            y: [0, -60, 50, 0],
-            scale: [1, 1.25, 0.85, 1]
-          }}
-          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/15 rounded-full blur-[140px] pointer-events-none"
-        />
-        <motion.div 
-          animate={{ 
-            x: [0, -50, 60, 0],
-            y: [0, 50, -40, 0],
-            scale: [1, 0.85, 1.2, 1]
-          }}
-          transition={{ duration: 22, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute bottom-1/4 right-1/4 w-[450px] h-[450px] bg-cyan-500/10 rounded-full blur-[130px] pointer-events-none"
-        />
-        <motion.div 
-          animate={{ 
-            x: [0, 40, -50, 0],
-            y: [0, 45, 50, 0],
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute top-1/3 right-1/3 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-[120px] pointer-events-none"
-        />
-
-        {/* Tech Background Layout */}
+      <section className="relative min-h-screen flex flex-col justify-center items-center pt-32 pb-20 overflow-hidden bg-[#030712] text-white">
+        
+        {/* Soft, professional background gradients */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          {/* Subtle Terrestrial Terrain Underlay */}
-          <img
-            src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?w=1800&h=1000&fit=crop"
-            alt=""
-            className="w-full h-full object-cover opacity-[0.04] mix-blend-overlay"
+          {/* Central ambient glow behind the content */}
+          <motion.div 
+            animate={{ 
+              scale: [1, 1.1, 0.95, 1],
+              opacity: [0.3, 0.45, 0.35, 0.3]
+            }}
+            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[140px]"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#030712]/98 via-[#030712]/85 to-transparent" />
-          
-          {/* Clean CAD Dot Grid */}
-          <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.03)_1px,transparent_1px)] [background-size:28px_28px] opacity-75" />
+          <motion.div 
+            animate={{ 
+              scale: [0.9, 1.05, 1, 0.9],
+              opacity: [0.2, 0.35, 0.25, 0.2]
+            }}
+            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cyan-500/15 rounded-full blur-[120px]"
+          />
 
-          {/* Technical Axis Lines & Margins */}
-          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-50" />
-          <div className="absolute left-8 top-16 bottom-16 w-px bg-gradient-to-b from-transparent via-white/10 to-transparent opacity-30" />
-          <div className="absolute right-8 top-16 bottom-16 w-px bg-gradient-to-b from-transparent via-white/10 to-transparent opacity-30" />
+          {/* Clean CAD dot grid */}
+          <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.025)_1px,transparent_1px)] [background-size:32px_32px] opacity-80" />
 
-          {/* Corner Crosshairs */}
-          <svg className="absolute left-5 top-28 w-4 h-4 text-white/20 opacity-60" viewBox="0 0 16 16" fill="none">
-            <line x1="8" y1="0" x2="8" y2="16" stroke="currentColor" strokeWidth="0.5"/>
-            <line x1="0" y1="8" x2="16" y2="8" stroke="currentColor" strokeWidth="0.5"/>
-          </svg>
-          <svg className="absolute right-5 top-28 w-4 h-4 text-white/20 opacity-60" viewBox="0 0 16 16" fill="none">
-            <line x1="8" y1="0" x2="8" y2="16" stroke="currentColor" strokeWidth="0.5"/>
-            <line x1="0" y1="8" x2="16" y2="8" stroke="currentColor" strokeWidth="0.5"/>
-          </svg>
-          
-          {/* Faint Coordinate Indicator (Top-Left margin) */}
-          <span className="absolute left-12 top-28 text-[8px] font-mono text-cyan-400/40 select-none tracking-widest">
-            SYS.REF: {telemetry.lat.toFixed(4)}°N {telemetry.lng.toFixed(4)}°E // LIVE.FEED
-          </span>
+          {/* Fine structural lines */}
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+          <div className="absolute left-12 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/5 to-transparent" />
+          <div className="absolute right-12 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/5 to-transparent" />
         </div>
 
-        <div className="container mx-auto px-4 md:px-6 relative z-10 py-20">
-          <div className="grid lg:grid-cols-12 gap-12 items-center font-sans">
-            <div className="lg:col-span-6 max-w-2xl">
-              {/* Premium Pill Badge */}
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.05 }}
-                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-md mb-6"
-              >
-                <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse" />
-                <span className="text-[10px] font-bold uppercase tracking-widest text-primary">
-                  ✦ Leading Drone Technology Platform
-                </span>
-              </motion.div>
+        <div className="container mx-auto px-4 md:px-6 relative z-10 text-center flex flex-col items-center">
+          
+          {/* Centered Pill Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-md mb-8"
+          >
+            <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse" />
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary">
+              ✦ Leading Drone Technology Platform
+            </span>
+          </motion.div>
 
-              <motion.h1
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="font-display text-5xl md:text-7xl lg:text-[5.5rem] text-white leading-[0.95] mb-6 tracking-tight"
-              >
-                Building
-                <br />
-                India's Future
-                <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-red-500 to-amber-500 font-extrabold">
-                  Drone Ecosystem.
-                </span>
-              </motion.h1>
+          {/* Main Title Heading */}
+          <motion.h1
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="font-display text-4xl sm:text-6xl md:text-8xl lg:text-[6.5rem] leading-[1.05] mb-8 tracking-tight max-w-5xl"
+          >
+            Building India's Future{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-red-500 to-amber-500 font-extrabold shadow-sm">
+              Drone Ecosystem
+            </span>
+          </motion.h1>
 
-              <motion.p
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.18 }}
-                className="text-slate-400 text-base md:text-lg mb-8 leading-relaxed max-w-lg font-medium"
-              >
-                From certifying India's next generation of drone pilots to
-                manufacturing defence-grade UAVs — everything under one roof in
-                Madhya Pradesh.
-              </motion.p>
+          {/* Subtitle description */}
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-slate-400 text-base sm:text-lg md:text-xl mb-10 leading-relaxed max-w-2xl font-light"
+          >
+            From certifying India's next generation of drone pilots to manufacturing
+            defence-grade UAVs — everything under one roof in Madhya Pradesh.
+          </motion.p>
 
-              <motion.div
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="flex flex-wrap gap-4"
+          {/* Actions */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="flex flex-wrap items-center justify-center gap-4 mb-20"
+          >
+            <Link href="/training">
+              <Button
+                size="lg"
+                className="h-14 px-8 rounded-full text-sm font-bold tracking-wider uppercase bg-primary hover:bg-primary/90 hover:shadow-[0_0_25px_rgba(239,68,68,0.3)] hover:-translate-y-0.5 transition-all duration-300 group"
               >
-                <Link href="/training">
-                  <Button
-                    size="lg"
-                    className="h-14 px-8 rounded-full text-sm font-bold tracking-wider uppercase bg-primary hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5 transition-all duration-300 group"
-                  >
-                    Explore Programs{" "}
-                    <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </Link>
-                <Link href="/contact">
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="h-14 px-8 rounded-full text-sm font-bold tracking-wider uppercase border-white/10 text-white bg-white/5 hover:bg-white/10 hover:-translate-y-0.5 transition-all duration-300 shadow-sm"
-                  >
-                    Partner With Us
-                  </Button>
-                </Link>
-              </motion.div>
-            </div>
+                Explore Programs{" "}
+                <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
+            <Link href="/contact">
+              <Button
+                size="lg"
+                variant="outline"
+                className="h-14 px-8 rounded-full text-sm font-bold tracking-wider uppercase border-white/10 text-white bg-white/5 hover:bg-white/10 hover:border-white/20 hover:-translate-y-0.5 transition-all duration-300 shadow-sm"
+              >
+                Partner With Us
+              </Button>
+            </Link>
+          </motion.div>
 
-            {/* Interactive Hero Telemetry Panel */}
-            <div className="lg:col-span-6 relative flex items-center justify-center min-h-[480px] w-full lg:h-[600px]">
-              {/* Radial Glow Circles */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
-                <div className="absolute w-[300px] sm:w-[450px] h-[300px] sm:h-[450px] bg-primary/15 rounded-full blur-[90px] animate-pulse" />
-                <div className="absolute w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] bg-cyan-500/5 rounded-full blur-[110px] animate-pulse delay-700" />
+          {/* Centered Showcase Element: Futuristic 3D Telemetry Console & Drone View */}
+          <motion.div
+            initial={{ opacity: 0, y: 40, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
+            className="relative w-full max-w-5xl rounded-3xl overflow-hidden border border-white/10 bg-slate-900/40 backdrop-blur-xl shadow-[0_0_80px_rgba(0,0,0,0.8)] p-6 md:p-8 group"
+          >
+            {/* Ambient inner glow */}
+            <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
+
+            {/* Layout inside showcase: left column: live drone visual; right column: telemetry specs */}
+            <div className="grid md:grid-cols-12 gap-8 items-center text-left">
+              
+              {/* Left Column: Drone Image with scanning laser */}
+              <div className="md:col-span-7 relative rounded-2xl overflow-hidden aspect-[16/10] bg-black/40 border border-white/5">
+                <img
+                  src="https://images.unsplash.com/photo-1527977966376-1c8408f9f108?w=1200&h=800&fit=crop"
+                  alt="Sleek drone"
+                  className="w-full h-full object-cover opacity-90 group-hover:scale-102 transition-transform duration-700"
+                />
                 
-                {/* Decorative Radar HUD lines */}
-                <svg className="absolute w-[350px] sm:w-[480px] h-[350px] sm:h-[480px] opacity-[0.25] text-cyan-500" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="100" cy="100" r="98" stroke="currentColor" strokeWidth="0.5" strokeDasharray="4 4" className="animate-[spin_120s_linear_infinite]" />
-                  <circle cx="100" cy="100" r="80" stroke="currentColor" strokeWidth="0.25" />
-                  <circle cx="100" cy="100" r="60" stroke="currentColor" strokeWidth="0.5" strokeDasharray="8 8" className="animate-[spin_60s_linear_infinite_reverse]" />
-                  <line x1="100" y1="2" x2="100" y2="198" stroke="currentColor" strokeWidth="0.25" />
-                  <line x1="2" y1="100" x2="198" y2="100" stroke="currentColor" strokeWidth="0.25" />
-                </svg>
+                {/* Scan Laser */}
+                <motion.div
+                  animate={{ translateY: ["0px", "280px", "0px"] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute left-0 right-0 h-px bg-cyan-400 shadow-[0_0_8px_#22d3ee] pointer-events-none"
+                  style={{ top: "0" }}
+                />
+
+                {/* Overlaid system coordinate text */}
+                <div className="absolute top-4 left-4 bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 text-[9px] font-mono tracking-wider text-slate-300 flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-red-500 animate-ping" />
+                  FEED_ID: IN_ALT_2004 // ACTIVE
+                </div>
+
+                <div className="absolute bottom-4 right-4 bg-black/80 backdrop-blur-md px-3 py-1 rounded-lg border border-white/10 text-[9px] font-mono text-cyan-400">
+                  SYS.REF: {telemetry.lat.toFixed(4)}°N {telemetry.lng.toFixed(4)}°E
+                </div>
               </div>
 
-              {/* Main Floating Drone Mockup */}
-              <motion.div
-                animate={{ y: [0, -12, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="relative z-10 w-[260px] sm:w-[380px] aspect-square rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.8)] border border-white/20 bg-white/5 backdrop-blur-md p-4 group"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1527977966376-1c8408f9f108?w=800&h=800&fit=crop"
-                  alt="Sleek drone in flight"
-                  className="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700"
-                />
-                
-                {/* Laser Scanning Line Overlay */}
-                <motion.div
-                  animate={{ translateY: ["0px", "340px", "0px"] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute left-4 right-4 h-0.5 bg-cyan-400 shadow-[0_0_8px_#22d3ee] pointer-events-none"
-                  style={{ top: "16px" }}
-                />
+              {/* Right Column: Dynamic Telemetry Cards */}
+              <div className="md:col-span-5 space-y-5">
+                <div className="flex items-center justify-between pb-3 border-b border-white/5">
+                  <span className="text-xs font-bold font-mono tracking-widest text-slate-400 uppercase">SYS TELEMETRY</span>
+                  <span className="text-[10px] font-mono text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded">CONNECTIVITY_OK</span>
+                </div>
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none rounded-2xl" />
-                <span className="absolute top-8 left-8 bg-black/80 text-white text-[9px] font-mono tracking-widest px-2.5 py-1 rounded-md border border-white/10 backdrop-blur-sm flex items-center gap-1.5">
-                  <span className="h-1.5 w-1.5 rounded-full bg-red-500 animate-ping" />
-                  LIVE_FEED: ACTIVE
-                </span>
-              </motion.div>
-
-              {/* Telemetry Card 1: DGCA Status */}
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0, y: [0, -6, 0] }}
-                transition={{ x: { delay: 0.4 }, y: { duration: 5, repeat: Infinity, ease: "easeInOut" } }}
-                className="absolute top-12 left-0 sm:left-4 z-20 bg-slate-950/80 backdrop-blur-md border border-white/10 rounded-2xl p-4 shadow-[0_10px_30px_rgba(0,0,0,0.5)] max-w-[170px]"
-              >
-                <div className="flex items-center gap-2 mb-1">
-                  <div className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-400">
-                    <ShieldCheck className="w-4 h-4" />
+                {/* Telemetry Stats Grid */}
+                <div className="grid grid-cols-2 gap-4">
+                  {/* Stat 1 */}
+                  <div className="bg-white/[0.02] border border-white/5 rounded-xl p-4">
+                    <div className="text-[10px] font-mono text-slate-400 mb-1">ALTITUDE</div>
+                    <div className="text-xl font-bold font-mono text-white">{telemetry.altitude} m</div>
                   </div>
-                  <span className="text-[10px] font-bold font-mono tracking-wider text-slate-400">DGCA STATUS</span>
-                </div>
-                <div className="font-display text-sm font-bold text-white flex items-center gap-1.5">
-                  Approved RPTO
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 shadow-[0_0_6px_#10b981]" />
-                </div>
-                <div className="text-[9px] font-medium text-slate-400 mt-0.5">RPC Certification</div>
-              </motion.div>
-
-              {/* Telemetry Card 2: Live Stats Feed */}
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0, y: [0, 6, 0] }}
-                transition={{ x: { delay: 0.6 }, y: { duration: 4.5, repeat: Infinity, ease: "easeInOut" } }}
-                className="absolute bottom-12 left-0 sm:left-0 z-20 bg-slate-950/80 backdrop-blur-md border border-white/10 rounded-2xl p-4 shadow-[0_10px_30px_rgba(0,0,0,0.5)] min-w-[180px]"
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-1.5">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                    <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest font-mono">Telemetry</span>
+                  {/* Stat 2 */}
+                  <div className="bg-white/[0.02] border border-white/5 rounded-xl p-4">
+                    <div className="text-[10px] font-mono text-slate-400 mb-1">VELOCITY</div>
+                    <div className="text-xl font-bold font-mono text-cyan-400">{telemetry.velocity} m/s</div>
                   </div>
-                  <span className="text-[9px] font-mono text-emerald-400 font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded">GPS_OK</span>
+                  {/* Stat 3 */}
+                  <div className="bg-white/[0.02] border border-white/5 rounded-xl p-4">
+                    <div className="text-[10px] font-mono text-slate-400 mb-1">DGCA STATUS</div>
+                    <div className="text-sm font-bold text-emerald-400 mt-1">Approved RPTO</div>
+                  </div>
+                  {/* Stat 4 */}
+                  <div className="bg-white/[0.02] border border-white/5 rounded-xl p-4">
+                    <div className="text-[10px] font-mono text-slate-400 mb-1">MANUFACTURING</div>
+                    <div className="text-sm font-bold text-white mt-1">50K Sq Ft Hub</div>
+                  </div>
                 </div>
-                <div className="space-y-1.5">
+
+                {/* Live scanning progress bar */}
+                <div className="space-y-1">
                   <div className="flex justify-between text-[10px] font-mono text-slate-400">
-                    <span>ALTITUDE</span>
-                    <span className="font-bold text-white">{telemetry.altitude} m</span>
+                    <span>SYSTEM DIAGNOSTIC</span>
+                    <span>{Math.round(Math.min((telemetry.velocity / 25) * 100, 100))}%</span>
                   </div>
-                  <div className="flex justify-between text-[10px] font-mono text-slate-400">
-                    <span>VELOCITY</span>
-                    <span className="font-bold text-white">{telemetry.velocity} m/s</span>
-                  </div>
-                  <div className="w-full bg-white/10 h-1.5 rounded-full overflow-hidden mt-1">
+                  <div className="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
                     <motion.div
                       animate={{ width: `${Math.min((telemetry.velocity / 25) * 100, 100)}%` }}
                       transition={{ ease: "easeInOut" }}
-                      className="bg-cyan-400 h-full rounded-full shadow-[0_0_8px_#22d3ee]"
+                      className="bg-primary h-full rounded-full shadow-[0_0_8px_#ef4444]"
                     />
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
-              {/* Telemetry Card 3: Manufacturing */}
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0, y: [0, 8, 0] }}
-                transition={{ x: { delay: 0.5 }, y: { duration: 5.5, repeat: Infinity, ease: "easeInOut" } }}
-                className="absolute top-6 right-0 sm:right-4 z-20 bg-slate-950/80 backdrop-blur-md border border-white/10 rounded-2xl p-4 shadow-[0_10px_30px_rgba(0,0,0,0.5)] max-w-[170px]"
-              >
-                <div className="flex items-center gap-2 mb-1">
-                  <div className="p-1.5 rounded-lg bg-cyan-500/10 text-cyan-400">
-                    <Factory className="w-4 h-4" />
-                  </div>
-                  <span className="text-[10px] font-bold font-mono tracking-wider text-slate-400">FACILITY</span>
-                </div>
-                <div className="font-display text-sm font-bold text-white">50K Sq Ft</div>
-                <div className="text-[9px] font-medium text-slate-400 mt-0.5">UAV Manufacturing</div>
-              </motion.div>
-
-              {/* Telemetry Card 4: Success Stats */}
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0, y: [0, -8, 0] }}
-                transition={{ x: { delay: 0.7 }, y: { duration: 4.8, repeat: Infinity, ease: "easeInOut" } }}
-                className="absolute bottom-16 right-0 sm:right-0 z-20 bg-slate-950/80 backdrop-blur-md border border-white/10 rounded-2xl p-4 shadow-[0_10px_30px_rgba(0,0,0,0.5)] min-w-[160px]"
-              >
-                <div className="flex items-center gap-2 mb-1.5">
-                  <div className="p-1.5 rounded-lg bg-amber-500/10 text-amber-400">
-                    <Award className="w-4 h-4" />
-                  </div>
-                  <span className="text-[10px] font-bold font-mono tracking-wider text-slate-400">SUCCESS</span>
-                </div>
-                <div className="font-display text-lg font-black text-white tracking-tight">1000+</div>
-                <div className="text-[9px] font-semibold text-slate-400">DGCA Certified Pilots</div>
-              </motion.div>
             </div>
-          </div>
+
+          </motion.div>
+
         </div>
 
+        {/* Down Indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 text-slate-500 flex flex-col items-center"
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 text-slate-500"
         >
           <ArrowDown className="w-5 h-5 animate-bounce" />
         </motion.div>
+
       </section>
 
       {/* ── Trust bar marquee ────────────────────── */}
